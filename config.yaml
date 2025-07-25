@@ -1,0 +1,201 @@
+# NocturneRecon Configuration File
+# This file contains default settings for the reconnaissance framework
+
+general:
+  # Number of threads to use for operations
+  threads: 10
+  
+  # Request timeout in seconds
+  timeout: 10
+  
+  # Delay between requests in seconds (for rate limiting)
+  delay: 1.0
+  
+  # User agents to rotate through
+  user_agents:
+    - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15"
+    - "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    - "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+    - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0"
+
+# Subdomain enumeration settings
+subdomain_enum:
+  # Wordlists for DNS brute-force (relative to ~/.nocturnerecon/wordlists/)
+  wordlists:
+    - "subdomains-top1million-5000.txt"
+    - "common-subdomains.txt"
+  
+  # DNS servers to use for resolution
+  dns_servers:
+    - "8.8.8.8"      # Google DNS
+    - "1.1.1.1"      # Cloudflare DNS
+    - "208.67.222.222" # OpenDNS
+    - "9.9.9.9"      # Quad9 DNS
+  
+  # Enable/disable specific techniques
+  use_amass: true
+  use_massdns: true
+  use_crt_sh: true
+  use_dnsdumpster: true
+  use_subfinder: true
+
+# Email enumeration settings
+email_enum:
+  # Search engines to use
+  search_engines:
+    - "google"
+    - "bing"
+    - "duckduckgo"
+  
+  # Enable dorking techniques
+  dorking_enabled: true
+  
+  # Enable GitHub email search
+  github_search: true
+  
+  # Email permutation patterns
+  permutation_patterns:
+    - "{first}.{last}@{domain}"
+    - "{first}{last}@{domain}"
+    - "{first}_{last}@{domain}"
+    - "{first}@{domain}"
+    - "{last}@{domain}"
+    - "{first}{l}@{domain}"
+    - "{f}{last}@{domain}"
+    - "admin@{domain}"
+    - "info@{domain}"
+    - "contact@{domain}"
+    - "support@{domain}"
+    - "sales@{domain}"
+    - "marketing@{domain}"
+    - "hr@{domain}"
+    - "it@{domain}"
+
+# Certificate parsing settings
+cert_parser:
+  # Certificate transparency sources
+  sources:
+    - "crt.sh"
+    # - "censys"  # Requires API key
+  
+  # Include expired certificates
+  include_expired: false
+  
+  # Maximum certificates to process
+  max_certificates: 1000
+
+# GitHub enumeration settings
+github_enum:
+  # Search types to perform
+  search_code: true
+  search_commits: true
+  search_issues: true
+  search_repositories: true
+  
+  # Maximum results per search
+  max_results: 100
+  
+  # Include forked repositories
+  include_forks: false
+  
+  # Secret detection patterns (additional to built-in)
+  custom_secret_patterns:
+    - "password\\s*=\\s*['\"][^'\"]{8,}"
+    - "secret\\s*=\\s*['\"][^'\"]{10,}"
+
+# Breach data parsing settings
+breach_parser:
+  # Directories to search for breach data
+  breach_directories:
+    - "/opt/breach-parse"
+    - "~/breach-data"
+    - "./breach-dumps"
+  
+  # Supported file formats
+  supported_formats:
+    - ".txt"
+    - ".gz" 
+    - ".zip"
+  
+  # Maximum file size to process
+  max_file_size: "500MB"
+
+# Output settings
+output:
+  # Default output formats
+  formats:
+    - "json"
+    - "csv"
+    - "txt"
+  
+  # Add timestamps to filenames
+  timestamp_files: true
+  
+  # Remove duplicate results
+  deduplicate: true
+  
+  # Sort results alphabetically
+  sort_results: true
+
+# Proxy configuration
+proxy:
+  # Enable proxy usage
+  enabled: false
+  
+  # Proxy list (will be rotated)
+  proxy_list: []
+    # - "http://proxy1:8080"
+    # - "socks5://proxy2:1080"
+  
+  # Enable proxy rotation
+  rotation_enabled: false
+  
+  # Use Tor (requires Tor to be running)
+  tor_enabled: false
+  tor_proxy: "socks5://127.0.0.1:9050"
+
+# OPSEC (Operational Security) settings
+opsec:
+  # Add random delays to requests
+  random_delays: true
+  
+  # Randomize user agents
+  randomize_user_agents: true
+  
+  # Respect robots.txt (not recommended for recon)
+  respect_robots_txt: false
+  
+  # Maximum requests per host per session
+  max_requests_per_host: 100
+  
+  # Custom headers to add
+  custom_headers: {}
+    # "X-Forwarded-For": "192.168.1.1"
+    # "X-Real-IP": "10.0.0.1"
+
+# Logging configuration
+logging:
+  # Log level (DEBUG, INFO, WARNING, ERROR)
+  level: "INFO"
+  
+  # Log to file
+  log_to_file: false
+  log_file: "nocturnerecon.log"
+  
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Performance tuning
+performance:
+  # Connection pool size
+  connection_pool_size: 10
+  
+  # Request retries
+  max_retries: 3
+  
+  # Backoff factor for retries
+  backoff_factor: 0.3
+  
+  # Memory limit for large operations
+  memory_limit: "1GB"

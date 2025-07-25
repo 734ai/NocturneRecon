@@ -1,0 +1,223 @@
+{
+  "mcpServers": {
+    "nocturnerecon": {
+      "command": "python",
+      "args": ["-m", "nocturnerecon.mcp_server"],
+      "env": {
+        "NOCTURNERECON_CONFIG": "./config.yaml"
+      }
+    }
+  },
+  "server": {
+    "name": "nocturnerecon",
+    "version": "1.0.0-dev",
+    "description": "NocturneRecon MCP Server for OSINT operations",
+    "capabilities": {
+      "tools": [
+        {
+          "name": "subdomain_enum",
+          "description": "Enumerate subdomains for a target domain",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "Target domain to enumerate"
+              },
+              "output_format": {
+                "type": "string",
+                "enum": ["json", "csv", "txt"],
+                "default": "json",
+                "description": "Output format"
+              },
+              "threads": {
+                "type": "integer",
+                "default": 10,
+                "description": "Number of threads to use"
+              }
+            },
+            "required": ["target"]
+          }
+        },
+        {
+          "name": "email_enum",
+          "description": "Enumerate emails for a target domain",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "Target domain to search for emails"
+              },
+              "output_format": {
+                "type": "string",
+                "enum": ["json", "csv", "txt"],
+                "default": "json",
+                "description": "Output format"
+              }
+            },
+            "required": ["target"]
+          }
+        },
+        {
+          "name": "cert_parser",
+          "description": "Parse certificates for target domain",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "Target domain to analyze certificates"
+              },
+              "include_expired": {
+                "type": "boolean",
+                "default": false,
+                "description": "Include expired certificates"
+              },
+              "output_format": {
+                "type": "string",
+                "enum": ["json", "csv", "txt"],
+                "default": "json",
+                "description": "Output format"
+              }
+            },
+            "required": ["target"]
+          }
+        },
+        {
+          "name": "github_enum",
+          "description": "Gather GitHub intelligence for target",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "Target domain or organization"
+              },
+              "search_code": {
+                "type": "boolean",
+                "default": true,
+                "description": "Search GitHub code"
+              },
+              "search_commits": {
+                "type": "boolean",
+                "default": true,
+                "description": "Search GitHub commits"
+              },
+              "output_format": {
+                "type": "string",
+                "enum": ["json", "csv", "txt"],
+                "default": "json",
+                "description": "Output format"
+              }
+            },
+            "required": ["target"]
+          }
+        },
+        {
+          "name": "breach_parser",
+          "description": "Parse breach data for target domain",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "Target domain to search in breach data"
+              },
+              "breach_directories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Directories containing breach data"
+              },
+              "output_format": {
+                "type": "string",
+                "enum": ["json", "csv", "txt"],
+                "default": "json",
+                "description": "Output format"
+              }
+            },
+            "required": ["target"]
+          }
+        },
+        {
+          "name": "full_recon",
+          "description": "Run all reconnaissance modules",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string",
+                "description": "Target domain for comprehensive reconnaissance"
+              },
+              "modules": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["subdomains", "emails", "certs", "github", "breach"]
+                },
+                "default": ["subdomains", "emails", "certs", "github"],
+                "description": "Modules to run"
+              },
+              "output_format": {
+                "type": "string",
+                "enum": ["json", "csv", "txt"],
+                "default": "json",
+                "description": "Output format"
+              },
+              "threads": {
+                "type": "integer",
+                "default": 10,
+                "description": "Number of threads to use"
+              },
+              "delay": {
+                "type": "number",
+                "default": 1.0,
+                "description": "Delay between requests in seconds"
+              }
+            },
+            "required": ["target"]
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "config",
+          "description": "NocturneRecon configuration",
+          "uri": "file://config.yaml",
+          "mimeType": "application/yaml"
+        },
+        {
+          "name": "wordlists",
+          "description": "Subdomain wordlists",
+          "uri": "file://wordlists/",
+          "mimeType": "text/plain"
+        }
+      ]
+    }
+  },
+  "client": {
+    "name": "nocturnerecon-client",
+    "version": "1.0.0-dev"
+  },
+  "transport": {
+    "type": "stdio"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "security": {
+    "allowedHosts": ["localhost", "127.0.0.1"],
+    "rateLimit": {
+      "requests": 100,
+      "window": 60
+    },
+    "sandbox": {
+      "enabled": true,
+      "allowedDirectories": ["./output", "./wordlists", "./config"],
+      "allowedCommands": ["amass", "massdns", "gowitness", "subfinder"]
+    }
+  }
+}

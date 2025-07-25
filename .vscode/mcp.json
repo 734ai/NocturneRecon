@@ -1,0 +1,10 @@
+{
+	"servers": {
+		"my-mcp-server-143bc109": {
+			"type": "stdio",
+			"command": "mcp.json",
+			"args": []
+		}
+	},
+	"inputs": []
+}
