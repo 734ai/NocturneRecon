@@ -1,0 +1,147 @@
+{
+  "discovered_documents": [
+    {
+      "discovered_at": "2025-07-25 06:44:26",
+      "file_size": "unknown",
+      "file_type": "unknown",
+      "is_sensitive": false,
+      "search_pattern": "site:example.com filetype:ppt",
+      "source": "bing.com",
+      "title": "easyjet.comhttps://www.easyjet.com › it › voli-low-cost › orari-dei-volo",
+      "url": "https://www.easyjet.com/it/voli-low-cost/orari-dei-volo?link_megadrop"
+    },
+    {
+      "discovered_at": "2025-07-25 06:46:11",
+      "file_size": "unknown",
+      "file_type": "pdf",
+      "is_sensitive": false,
+      "search_pattern": "example.com \"guide\" filetype:pdf",
+      "source": "bing.com",
+      "title": "allangray.com.nahttps://www.allangray.com.na › globalassets › articles › ... · PDF file",
+      "url": "https://www.allangray.com.na/globalassets/articles/grayissue/offshore_investment_-platform_-fund_list.pdf"
+    },
+    {
+      "discovered_at": "2025-07-25 06:46:11",
+      "file_size": "unknown",
+      "file_type": "pdf",
+      "is_sensitive": false,
+      "search_pattern": "example.com \"guide\" filetype:pdf",
+      "source": "bing.com",
+      "title": "allangray.co.zahttps://groupra.allangray.co.za › documents › Change... · PDF file",
+      "url": "https://groupra.allangray.co.za/documents/Change-in-details-of-nominees-for-retirement-funds.pdf"
+    },
+    {
+      "discovered_at": "2025-07-25 06:46:11",
+      "file_size": "unknown",
+      "file_type": "pdf",
+      "is_sensitive": false,
+      "search_pattern": "example.com \"guide\" filetype:pdf",
+      "source": "bing.com",
+      "title": "allangray.com.nahttps://www.allangray.com.na › globalassets › documents... · PDF file",
+      "url": "https://www.allangray.com.na/globalassets/documents-repository/product/brochures/Offshore%20Endowment/Files/Offshore%20Endowment%20Infographic.pdf"
+    }
+  ],
+  "document_metadata": [],
+  "leaked_documents": [],
+  "office_analysis": [],
+  "pdf_analysis": [],
+  "sensitive_content": [
+    {
+      "data_type": "phone_numbers",
+      "discovered_at": "2025-07-25 06:46:53",
+      "document_title": "easyjet.comhttps://www.easyjet.com › it › voli-low-cost › orari-dei-volo",
+      "document_url": "https://www.easyjet.com/it/voli-low-cost/orari-dei-volo?link_megadrop",
+      "match_count": 10,
+      "sample_matches": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "data_type": "urls",
+      "discovered_at": "2025-07-25 06:46:54",
+      "document_title": "easyjet.comhttps://www.easyjet.com › it › voli-low-cost › orari-dei-volo",
+      "document_url": "https://www.easyjet.com/it/voli-low-cost/orari-dei-volo?link_megadrop",
+      "match_count": 145,
+      "sample_matches": [
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd",
+        "http://www.w3.org/1999/xhtml",
+        "https://www.easyjet.com/public/d940fe2422e97ca1085a61fc1d564b920c001677d848"
+      ]
+    },
+    {
+      "data_type": "phone_numbers",
+      "discovered_at": "2025-07-25 06:47:06",
+      "document_title": "allangray.com.nahttps://www.allangray.com.na › globalassets › articles › ... · PDF file",
+      "document_url": "https://www.allangray.com.na/globalassets/articles/grayissue/offshore_investment_-platform_-fund_list.pdf",
+      "match_count": 8,
+      "sample_matches": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "data_type": "urls",
+      "discovered_at": "2025-07-25 06:47:06",
+      "document_title": "allangray.com.nahttps://www.allangray.com.na › globalassets › articles › ... · PDF file",
+      "document_url": "https://www.allangray.com.na/globalassets/articles/grayissue/offshore_investment_-platform_-fund_list.pdf",
+      "match_count": 7,
+      "sample_matches": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "http://ns.adobe.com/xap/1.0/",
+        "http://ns.adobe.com/xap/1.0/mm/"
+      ]
+    },
+    {
+      "data_type": "phone_numbers",
+      "discovered_at": "2025-07-25 06:47:10",
+      "document_title": "allangray.co.zahttps://groupra.allangray.co.za › documents › Change... · PDF file",
+      "document_url": "https://groupra.allangray.co.za/documents/Change-in-details-of-nominees-for-retirement-funds.pdf",
+      "match_count": 460,
+      "sample_matches": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "data_type": "urls",
+      "discovered_at": "2025-07-25 06:47:10",
+      "document_title": "allangray.co.zahttps://groupra.allangray.co.za › documents › Change... · PDF file",
+      "document_url": "https://groupra.allangray.co.za/documents/Change-in-details-of-nominees-for-retirement-funds.pdf",
+      "match_count": 8,
+      "sample_matches": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "http://ns.adobe.com/xap/1.0/",
+        "http://ns.adobe.com/xap/1.0/mm/"
+      ]
+    },
+    {
+      "data_type": "phone_numbers",
+      "discovered_at": "2025-07-25 06:47:15",
+      "document_title": "allangray.com.nahttps://www.allangray.com.na › globalassets › documents... · PDF file",
+      "document_url": "https://www.allangray.com.na/globalassets/documents-repository/product/brochures/Offshore%20Endowment/Files/Offshore%20Endowment%20Infographic.pdf",
+      "match_count": 2,
+      "sample_matches": [
+        "",
+        ""
+      ]
+    },
+    {
+      "data_type": "urls",
+      "discovered_at": "2025-07-25 06:47:15",
+      "document_title": "allangray.com.nahttps://www.allangray.com.na › globalassets › documents... · PDF file",
+      "document_url": "https://www.allangray.com.na/globalassets/documents-repository/product/brochures/Offshore%20Endowment/Files/Offshore%20Endowment%20Infographic.pdf",
+      "match_count": 14,
+      "sample_matches": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "http://ns.adobe.com/xap/1.0/",
+        "http://ns.adobe.com/xap/1.0/mm/"
+      ]
+    }
+  ],
+  "target": "example.com",
+  "timestamp": "2025-07-25 06:43:26"
+}

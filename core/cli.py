@@ -5,7 +5,7 @@ CLI argument parsing and main entry point for NocturneRecon
 import argparse
 import sys
 from pathlib import Path
-from core.utils import print_banner, print_success, print_error, print_info
+from core.utils import print_banner, print_success, print_error, print_info, print_warning
 from core.config import load_config
 
 def create_parser():
@@ -15,10 +15,18 @@ def create_parser():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # v1.0 Core Modules
   python3 main.py --module subdomains --target example.com
   python3 main.py --module emails --target example.com --output json
   python3 main.py --module certs --target example.com --verbose
   python3 main.py --module github --target example.com --output-dir /tmp/results
+  python3 main.py --module breach --target example.com --breach-file /path/to/dump.txt
+  
+  # v2.0+ Advanced Modules
+  python3 main.py --module darkweb --target example.com --output json
+  python3 main.py --module slack --target example.com --verbose
+  python3 main.py --module pastebin --target example.com --output csv
+  python3 main.py --module documents --target example.com --output txt
         """
     )
     
@@ -32,7 +40,7 @@ Examples:
     parser.add_argument(
         '--module', '-m',
         required=True,
-        choices=['subdomains', 'emails', 'certs', 'github', 'breach', 'all'],
+        choices=['subdomains', 'emails', 'certs', 'github', 'breach', 'darkweb', 'slack', 'pastebin', 'documents', 'all'],
         help='Reconnaissance module to run'
     )
     
@@ -163,10 +171,39 @@ def main():
         elif args.module == 'breach':
             from modules.breach_parser import BreachParser
             module = BreachParser(args, config)
+        elif args.module == 'darkweb':
+            from modules.darkweb_enum import DarkWebEnumerator
+            print_info("🌐 Starting Dark Web enumeration...")
+            print_warning("Ensure Tor is running for full functionality")
+            enumerator = DarkWebEnumerator(args.target, config)
+            results = enumerator.run(args.output, args.output_dir)
+            print_success(f"Dark Web enumeration completed")
+            return
+        elif args.module == 'slack':
+            from modules.slack_scraper import SlackIntelligenceGatherer
+            print_info("💬 Starting Slack intelligence gathering...")
+            gatherer = SlackIntelligenceGatherer(args.target, config)
+            results = gatherer.run(args.output, args.output_dir)
+            print_success(f"Slack intelligence gathering completed")
+            return
+        elif args.module == 'pastebin':
+            from modules.paste_monitor import PastebinMonitor
+            print_info("📋 Starting Pastebin monitoring...")
+            monitor = PastebinMonitor(args.target, config)
+            results = monitor.run(args.output, args.output_dir)
+            print_success(f"Pastebin monitoring completed")
+            return
+        elif args.module == 'documents':
+            from modules.doc_intel import DocumentIntelligenceGatherer
+            print_info("📄 Starting Document intelligence gathering...")
+            gatherer = DocumentIntelligenceGatherer(args.target, config)
+            results = gatherer.run(args.output, args.output_dir)
+            print_success(f"Document intelligence gathering completed")
+            return
         elif args.module == 'all':
             print_info("Running all modules...")
-            # TODO: Implement all modules runner
-            print_error("All modules runner not yet implemented")
+            # TODO: Implement all modules runner with v2.0 modules
+            print_error("All modules runner not yet implemented for v2.0 modules")
             sys.exit(1)
         
         # Run the module

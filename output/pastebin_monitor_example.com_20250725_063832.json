@@ -1,0 +1,98 @@
+{
+  "code_exposures": [],
+  "credential_leaks": [],
+  "exposure_summary": {
+    "code_exposures": 0,
+    "credential_leaks": 0,
+    "high_risk_pastes": 0,
+    "low_risk_pastes": 6,
+    "medium_risk_pastes": 0,
+    "sites_with_detections": 1,
+    "total_pastes_found": 6,
+    "total_sites_checked": 7
+  },
+  "historical_pastes": [
+    {
+      "author": "",
+      "content_preview": "",
+      "date": "",
+      "discovered_at": "2025-07-25 06:32:02",
+      "risk_score": 0,
+      "search_pattern": "example.com",
+      "sensitive_data": [],
+      "site": "justpaste.it",
+      "title": "Account",
+      "url": "/login"
+    },
+    {
+      "author": "",
+      "content_preview": "",
+      "date": "",
+      "discovered_at": "2025-07-25 06:32:02",
+      "risk_score": 0,
+      "search_pattern": "example.com",
+      "sensitive_data": [],
+      "site": "justpaste.it",
+      "title": "Terms",
+      "url": "/terms"
+    },
+    {
+      "author": "",
+      "content_preview": "",
+      "date": "",
+      "discovered_at": "2025-07-25 06:32:02",
+      "risk_score": 0,
+      "search_pattern": "example.com",
+      "sensitive_data": [],
+      "site": "justpaste.it",
+      "title": "Privacy",
+      "url": "/privacypolicy"
+    },
+    {
+      "author": "",
+      "content_preview": "",
+      "date": "",
+      "discovered_at": "2025-07-25 06:32:02",
+      "risk_score": 0,
+      "search_pattern": "example.com",
+      "sensitive_data": [],
+      "site": "justpaste.it",
+      "title": "Cookies",
+      "url": "/cookies"
+    },
+    {
+      "author": "",
+      "content_preview": "",
+      "date": "",
+      "discovered_at": "2025-07-25 06:32:02",
+      "risk_score": 0,
+      "search_pattern": "example.com",
+      "sensitive_data": [],
+      "site": "justpaste.it",
+      "title": "Blog",
+      "url": "/u/justpasteit"
+    },
+    {
+      "author": "",
+      "content_preview": "",
+      "date": "",
+      "discovered_at": "2025-07-25 06:32:02",
+      "risk_score": 0,
+      "search_pattern": "example.com",
+      "sensitive_data": [],
+      "site": "justpaste.it",
+      "title": "About",
+      "url": "/about"
+    }
+  ],
+  "monitored_sites": [
+    {
+      "last_checked": "2025-07-25 06:38:32",
+      "site": "justpaste.it",
+      "status": "detections_found"
+    }
+  ],
+  "paste_detections": [],
+  "target": "example.com",
+  "timestamp": "2025-07-25 06:22:32"
+}

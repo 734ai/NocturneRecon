@@ -34,9 +34,19 @@ def test_imports():
         from modules.cert_parser import CertificateParser
         from modules.github_enum import GitHubEnumerator
         from modules.breach_parser import BreachParser
-        print_success("Reconnaissance modules imported successfully")
+        print_success("v1.0 Reconnaissance modules imported successfully")
     except Exception as e:
-        print_error(f"Reconnaissance module import failed: {e}")
+        print_error(f"v1.0 Reconnaissance module import failed: {e}")
+        return False
+    
+    try:
+        from modules.darkweb_enum import DarkWebEnumerator
+        from modules.slack_scraper import SlackIntelligenceGatherer
+        from modules.paste_monitor import PastebinMonitor
+        from modules.doc_intel import DocumentIntelligenceGatherer
+        print_success("v2.0+ Advanced modules imported successfully")
+    except Exception as e:
+        print_error(f"v2.0+ Advanced module import failed: {e}")
         return False
     
     try:
@@ -158,8 +168,8 @@ def test_module_initialization():
         args = MockArgs()
         config = load_config()
         
-        # Test each module
-        modules = {
+        # Test each v1.0 module
+        v1_modules = {
             'SubdomainEnumerator': 'modules.subdomain_enum',
             'EmailEnumerator': 'modules.email_enum',
             'CertificateParser': 'modules.cert_parser',
@@ -167,7 +177,7 @@ def test_module_initialization():
             'BreachParser': 'modules.breach_parser'
         }
         
-        for module_name, module_path in modules.items():
+        for module_name, module_path in v1_modules.items():
             try:
                 module = __import__(module_path, fromlist=[module_name])
                 module_class = getattr(module, module_name)
@@ -175,6 +185,24 @@ def test_module_initialization():
                 print_success(f"{module_name} initialized successfully")
             except Exception as e:
                 print_error(f"{module_name} initialization failed: {e}")
+                return False
+        
+        # Test v2.0+ modules (different initialization pattern)
+        v2_modules = {
+            'DarkWebEnumerator': 'modules.darkweb_enum',
+            'SlackIntelligenceGatherer': 'modules.slack_scraper',
+            'PastebinMonitor': 'modules.paste_monitor',
+            'DocumentIntelligenceGatherer': 'modules.doc_intel'
+        }
+        
+        for module_name, module_path in v2_modules.items():
+            try:
+                module = __import__(module_path, fromlist=[module_name])
+                module_class = getattr(module, module_name)
+                instance = module_class(args.target, config)  # Different initialization
+                print_success(f"{module_name} (v2.0+) initialized successfully")
+            except Exception as e:
+                print_error(f"{module_name} (v2.0+) initialization failed: {e}")
                 return False
         
         return True
@@ -210,10 +238,12 @@ def main():
     print_info(f"Test Results: {passed}/{total} tests passed")
     
     if passed == total:
-        print_success("All tests passed! NocturneRecon is ready to use.")
+        print_success("All tests passed! NocturneRecon v2.0+ is ready to use.")
         print_info("\nNext steps:")
         print_info("1. Run: python3 main.py --help")
-        print_info("2. Try: python3 main.py --module subdomains --target example.com")
+        print_info("2. Try v1.0 modules: python3 main.py --module subdomains --target example.com")
+        print_info("3. Try v2.0+ modules: python3 main.py --module darkweb --target example.com")
+        print_info("4. Advanced usage: python3 main.py --module slack --target example.com --verbose")
         return 0
     else:
         print_error(f"{total - passed} tests failed. Please check the errors above.")

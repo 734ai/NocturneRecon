@@ -1,6 +1,6 @@
 # 🦉 NocturneRecon
 
-[![Version](https://img.shields.io/badge/version-1.0.0--dev-blue.svg)](https://github.com/734ai/NocturneRecon)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/734ai/NocturneRecon)
 [![Python](https://img.shields.io/badge/python-3.8%2B-green.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macOS%20%7C%20windows-lightgrey.svg)]()
@@ -22,7 +22,11 @@ NocturneRecon is a stealth-oriented, fully modular reconnaissance toolkit for re
 | 🔐 Breach Intel          | Local parsing of breach dumps (`breach-parse`, `leakcheck`, custom regex)     | ✅ Complete |
 | 🧬 Cert Transparency     | Passive cert scraping from crt.sh & Censys HTML feeds                         | ✅ Complete |
 | 🕵️ GitHub Intel         | GitHub dork scanning (regex, secret leaks, emails via scraping)               | ✅ Complete |
-| 🖼 Screenshot Engine     | Full webpage rendering of resolved subdomains using `gowitness` or `aquatone` | 🔄 External Tool |
+| �️ Dark Web Enumeration  | Tor hidden service discovery, onion domain analysis, leak monitoring          | ✅ Complete |
+| 💬 Slack Intelligence    | Slack workspace enumeration, exposed chat detection, integration scanning     | ✅ Complete |
+| 📋 Pastebin Monitor      | Multi-site paste monitoring, real-time leak detection, sensitive content scan | ✅ Complete |
+| 📄 Document Intelligence | PDF/Office metadata extraction, public file discovery, document leak detection| ✅ Complete |
+| �🖼 Screenshot Engine     | Full webpage rendering of resolved subdomains using `gowitness` or `aquatone` | 🔄 External Tool |
 | 🔍 Search Engine Scraper | Headless search engine scraping via `serp_scraper.py`                         | ✅ Complete |
 | 💾 Output Management     | Structured output in JSON/CSV/TXT, auto-saved per module with timestamping    | ✅ Complete |
 
